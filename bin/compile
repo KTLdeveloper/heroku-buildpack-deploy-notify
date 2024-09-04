@@ -1,0 +1,18 @@
+# release.sh
+
+#!/bin/bash
+
+# Slack Webhook URL
+WEBHOOK_URL="https://hooks.slack.com/services/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"
+
+# Message to send
+MESSAGE="Heroku app '$HEROKU_APP_NAME' has been successfully released! Env: $ENVIRONMENT_NAME Commit: $HEROKU_SLUG_COMMIT, Release: $HEROKU_RELEASE_VERSION at $HEROKU_RELEASE_CREATED_AT"
+echo $MESSAGE
+
+# Send the message
+curl -X POST\
+  -H 'Content-type: application/json'\
+  --data "{\"blocks\": [{\"type\": \"context\",\"elements\": [{\"type\": \"image\",\"image_url\": \"$NITRA_DASHBOARD_URL/nitra/icons/icon-128x128.png\",\"alt_text\": \"$ENVIRONMENT_NAME environment\"},{\"type\": \"mrkdwn\",\"text\": \"*$HEROKU_APP_NAME* has been successfully deployed!\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Commit Hash:* $HEROKU_SLUG_COMMIT\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release Version:* $HEROKU_RELEASE_VERSION\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release At:* $HEROKU_RELEASE_CREATED_AT\"}]}]}"\
+   $WEBHOOK_URL
+
+echo "Slack notification sent."
