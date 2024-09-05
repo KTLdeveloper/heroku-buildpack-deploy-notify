@@ -29,7 +29,7 @@ echo "       Release Created At....... $NOW"
 
 echo "-----> Sending Slack notification"
 # Send the message
-curl -X POST -H 'Content-type: application/json' --data "{\"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"[]$HEROKU_APP_NAME has been successfully deployed!\",\"emoji\": true}},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Commit Hash:* $SOURCE_VERSION\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release Version:* $NEXT_RELEASE_VERSION\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release At:* $NOW\"}]}]}" $SLACK_WEBHOOK_URL
+curl -X POST -H 'Content-type: application/json' --data "{\"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"[$ENVIRONMENT_NAME]$HEROKU_APP_NAME has been successfully deployed!\",\"emoji\": true}},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Commit Hash:* $SOURCE_VERSION\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release Version:* $NEXT_RELEASE_VERSION\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release At:* $NOW\"}]}]}" $SLACK_WEBHOOK_URL
 
 echo "\n"
 echo "-----> Slack notification sent."
