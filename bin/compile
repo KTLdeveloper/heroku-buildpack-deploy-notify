@@ -16,6 +16,8 @@ export_env_dir() {
   fi
 }
 
+export_env_dir $3
+
 # Message to send
 MESSAGE="Heroku app '$HEROKU_APP_NAME' has been successfully released! Env: $ENVIRONMENT_NAME Commit: $HEROKU_SLUG_COMMIT, Release: $HEROKU_RELEASE_VERSION at $HEROKU_RELEASE_CREATED_AT"
 echo $MESSAGE
