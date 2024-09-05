@@ -17,7 +17,7 @@ export_env_dir() {
 
 export_env_dir $3
 NEXT_RELEASE_VERSION=$(($(echo $HEROKU_RELEASE_VERSION| cut -d'v' -f 2)+1))
-NOW=$(date '+%Y-%m-%d %H:%M:%S')
+NOW=$(TZ=Asia/Taipei date '+%Y-%m-%d %H:%M:%S')
 echo ""
 echo "-----> Information about the Heroku app"
 echo "       App Name................. $HEROKU_APP_NAME"
