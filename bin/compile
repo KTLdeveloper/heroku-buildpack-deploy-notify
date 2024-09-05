@@ -23,6 +23,6 @@ MESSAGE="Heroku app '$HEROKU_APP_NAME' has been successfully released! Env: $ENV
 echo $MESSAGE
 
 # Send the message
-curl -X POST -H 'Content-type: application/json' --data "{\"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Heroku $HEROKU_APP_NAME has been successfully released!\",\"emoji\": true}},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Commit Hash:* $HEROKU_SLUG_COMMIT\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release Version:* $HEROKU_RELEASE_VERSION\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release At:* $HEROKU_RELEASE_CREATED_AT\"}]}]}\" $SLACK_WEBHOOK_URL
+curl -X POST -H 'Content-type: application/json' --data "{\"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Heroku $HEROKU_APP_NAME has been successfully released!\",\"emoji\": true}},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Commit Hash:* $HEROKU_SLUG_COMMIT\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release Version:* $HEROKU_RELEASE_VERSION\"}]},{\"type\": \"context\",\"elements\": [{\"type\": \"mrkdwn\",\"text\": \"*Release At:* $HEROKU_RELEASE_CREATED_AT\"}]}]}" $SLACK_WEBHOOK_URL
 
 echo "Slack notification sent."
